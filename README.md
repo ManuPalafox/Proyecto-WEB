@@ -6,3 +6,6 @@
 **Alumnos:**
 
 ##### Sanchez Palafox Manuel
+##### Miguel Vasquez Mariano Josue
+##### Feliciano Acatitlan Juan Antonio
+
