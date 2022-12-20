@@ -5,5 +5,4 @@
 
 **Alumnos:**
 
-#####Sanchez Palafox Manuel
-#####
+##### Sanchez Palafox Manuel
