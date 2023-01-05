@@ -116,6 +116,12 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+
+      /*Clase de estilo de texto invalido*/
+      .invalid-msg{
+        color:red;
+      }
+
       /*Fin de los estilos del registro*/
     </style>
 
@@ -124,7 +130,7 @@
     <link href="./CSS/form-validation.css" rel="stylesheet">
 
   </head>
-  <body>
+  <body onload="ocultarCampo()">
     
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" >
@@ -274,32 +280,32 @@
             <div class="col-md-4">
               <label for="Nombre_pila" class="form-label">Nombre de pila</label>
               <input type="text" class="form-control" id="Nombre_pila" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Ingresa tu nombre.
+              <div class="invalid-msg" id="error-Nombre_pila">
+                <p>Campo obligatorio. Tampoco se permiten caracteres especiales ni números<p>
               </div>
             </div>
 
             <div class="col-md-4">
               <label for="A_paterno" class="form-label">Apellido paterno</label>
               <input type="text" class="form-control" id="A_paterno" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Ingresa tu apellido paterno.
+              <div class="invalid-msg" id="error-A_paterno">
+                <p>Campo obligatorio. Tampoco se permiten caracteres especiales ni numeros<p>
               </div>
             </div>
 
             <div class="col-md-4">
               <label for="A_materno" class="form-label">Apellido materno</label>
               <input type="text" class="form-control" id="A_materno" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Ingresa tu apellido materno.
+              <div class="invalid-msg" id="error-A_materno">
+                <p>Campo obligatorio. Tampoco se permiten caracteres especiales ni numeros<p>
               </div>
             </div>
   
             <div class="col-md-3">
               <label for="fecha_nac" class="form-label">Fecha de nacimiento</label>
               <input type="date" class="form-control" id="fecha_nac" placeholder="" required>
-              <div class="invalid-feedback">
-                Ingrese su fecha de nacimiento.
+              <div class="invalid-msg" id="error-A_materno">
+                <p>Campo Obligatorio<p>
               </div>
             </div>
             <div class="col-md-3">
@@ -317,16 +323,19 @@
           <div class="col-md-3">
             <label for="Curp" class="form-label">CURP</label>
             <input type="text" class="form-control" id="Curp" placeholder="" required>
-            <div class="invalid-feedback">
-              Ingrese su curp.
+            <div class="invalid-msg" id="error-Curp">
+              <p>CURP invalida (Debe contar con 18 caracteres y seguir la estructura establecida de la CURP)<p>
             </div>
           </div>
 
           <div class="col-md-3">
             <label for="Boleta" class="form-label">Numero de boleta</label>
             <input type="text" class="form-control" id="Boleta" placeholder="" required>
-            <div class="invalid-feedback">
-              Ingrese su boleta.
+            <div class="invalid-msg" id="error-Boleta">
+              <p>El número de boleta debe contar con 10 digitos o empezar con PP o PE (Mayuscula o minuscula) y 8 digitos después; ejemplos:<p>
+              <p>2021789235<p>
+              <p>pp24678934<p>
+              <p>PE67890878<p></p>
             </div>
           </div>
           <!--Contacto-->
@@ -337,58 +346,60 @@
                 <div class="col-sm-5">
                   <label for="Alcaldia" class="form-label">Alcaldia</label>
                   <input type="text" class="form-control" id="Alcaldia" placeholder="Seleccion" required>
-                  <div class="invalid-feedback">
-                    Seleccione el nombre de su alcaldia.
+                  <div class="invalid-msg" id="error-Alcaldia">
+                    <p>Campo obligatorio. Tampoco se permiten caracteres especiales ni numeros<p>
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <label for="Colonia" class="form-label">Colonia</label>
                   <input type="text" class="form-control" id="Colonia" placeholder="Roma" required>
-                  <div class="invalid-feedback">
-                    Ingrese el nombre de su colonia.
+                  <div class="invalid-msg" id="error-Colonia">
+                    <p>Campo obligatorio. Tampoco se permiten caracteres especiales ni numeros<p>
                   </div>
                 </div>
                 <div class="col-sm-2">
-                  <label for="C.P" class="form-label">C.P</label>
-                  <input type="text" class="form-control" id="C.P" placeholder="55110" required>
-                  <div class="invalid-feedback">
-                    Ingrese su còdigo postal.
+                  <label for="CP" class="form-label">C.P</label>
+                  <input type="text" class="form-control" id="CP" placeholder="55110" required>
+                  <div class="invalid-msg" id="error-CP">
+                    <p>El codigo postal debe contar con 5 digitos<p>
                   </div>
                 </div>
               </div>
               <div class="col-sm-5">
                   <label for="calle" class="form-label">Nombre de la calle</label>
                   <input type="text" class="form-control" id="calle" placeholder="Republica del salvador" value="" required>
-                  <div class="invalid-feedback">
-                    Ingrese el nombre de su calle.
+                  <div class="invalid-msg" id="error-calle">
+                    <p>Campo obligatorio. Tampoco se permiten caracteres especiales ni numeros<p>
                   </div>
               </div>
                 <div class="col-sm-4">
                   <label for="num_e" class="form-label">Numero exterior</label>
                   <input type="text" class="form-control" id="num_e" placeholder="78" required>
-                  <div class="invalid-feedback">
-                    Ingrese su numero exterior.
+                  <div class="invalid-msg" id="error-num_e">
+                    <p>El numero exterior debe contar con al menos un digito<p>
                   </div>
                 </div>
                 <div class="col-sm-3">
                   <label for="num_i" class="form-label">Numero interior</label>
                   <input type="text" class="form-control" id="num_i" placeholder="34">
+                  <div class="invalid-msg" id="error-num_i">
+                    <p>El numero interior debe contar con al menos un digito<p>
+                  </div>
                 </div>
                 <div class="row gy-3">
                   <div class="col-md-6">
-                    <label for="tel" class="form-label">Telefono de contacto</label>
-                    <input type="text" class="form-control" id="tel" placeholder="" required>
-                    <small class="text-muted">Si es extranjero agregar la lada</small>
-                    <div class="invalid-feedback">
-                    Ingrese su telefono de contacto.
+                    <label for="telefono" class="form-label">Teléfono de contacto (Escribir solamente numeros)</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="" required>
+                    <div class="invalid-msg" id="error-telefono">
+                      <p>El numero de telefono debe ser de México y por lo tanto contar con solamente 10 digitos<p>
                     </div>
                   </div>
       
                   <div class="col-md-6">
                     <label for="correo" class="form-label">Correo electronico</label>
                     <input type="email" class="form-control" id="correo" placeholder="juan@gmail.com" required>
-                    <div class="invalid-feedback">
-                      Ingrese su correo electronico
+                    <div class="invalid-msg" id="error-correo">
+                      <p>Campo en blanco o correo electrónico invalido<p>
                     </div>
                   </div>
                 </div>
@@ -400,7 +411,28 @@
               <div class="row g">
                 <div class="col-md-5">
                   <label for="esc_p" class="form-label">Escuela de procedencia</label>
-                  <input type="text" class="form-control" id="esc_p" placeholder="" value="" required>
+                  <select class="form-control" id="esc_p" placeholder="" value="" onchange="mostrarCampo(this.options[this.selectedIndex].value)" required>
+                    <option value="" disabled>--Seleccione escuela de procedencia--</option>
+                    <option value="CECyT1">CECyT 1 "González Vázquez Vega"</option>
+                    <option value="CECyT2">CECyT 2 "Miguel Bernard"</option>
+                    <option value="CECyT3">CECyT 3 "Estanislao Ramírez Ruiz"</option>
+                    <option value="CECyT4">CECyT 4 "Lázaro Cárdenas"</option>
+                    <option value="CECyT5">CECyT 5 "Benito Juárez García"</option>
+                    <option value="CECyT6">CECyT 6 "Miguel Othón de Mendizábal"</option>
+                    <option value="CECyT7">CECyT 7 "Cuauhtémoc"</option>
+                    <option value="CECyT8">CECyT 8 "Narciso Bassols García"</option>
+                    <option value="CECyT9">CECyT 9 "Juan de Dios Bátiz"</option>
+                    <option value="CECyT10">CECyT 10 "Carlos Vallejo Márquez"</option>
+                    <option value="CECyT11">CECyT 11 "Wilfrido Massieu Pérez"</option>
+                    <option value="CECyT12">CECyT 12 "José María Morelos y Pavón"</option>
+                    <option value="CECyT13">CECyT 13 "Ricardo Flores Magón"</option>
+                    <option value="CECyT14">CECyT 14 "Luis Enrique Erro"</option>
+                    <option value="CECyT15">CECyT 15 "Diódoro Antúnez Echegaray"</option>
+                    <option value="CECyT19">CECyT 19 “Leona Vicario”</option>
+                    <option value="CET1">CET 1 “Walter Cross Buchanan”</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                  <div id="otrocampo"><input type="text" class="form-control" id="esc_p_otro" placeholder="Escriba el nombre de su escuela de procedencia"></div>
                   <div class="invalid-feedback">
                     Valid first name is required.
                   </div>
@@ -408,7 +440,40 @@
     
                 <div class="col-md-5">
                   <label for="ent_p" class="form-label">Entidad federativa de procedencia</label>
-                  <input type="text" class="form-control" id="ent_p" placeholder="" value="" required>
+                  <select class="form-control" id="ent_p" placeholder="" value="" required>
+                    <option value="Aguascalientes">Aguascalientes</option>
+                    <option value="Baja California">Baja California</option>
+                    <option value="Baja California Sur">Baja California Sur</option>
+                    <option value="Campeche">Campeche</option>
+                    <option value="Chiapas">Chiapas</option>
+                    <option value="Chihuahua">Chihuahua</option>
+                    <option value="CDMX">Ciudad de México</option>
+                    <option value="Coahuila">Coahuila</option>
+                    <option value="Colima">Colima</option>
+                    <option value="Durango">Durango</option>
+                    <option value="Estado de México">Estado de México</option>
+                    <option value="Guanajuato">Guanajuato</option>
+                    <option value="Guerrero">Guerrero</option>
+                    <option value="Hidalgo">Hidalgo</option>
+                    <option value="Jalisco">Jalisco</option>
+                    <option value="Michoacán">Michoacán</option>
+                    <option value="Morelos">Morelos</option>
+                    <option value="Nayarit">Nayarit</option>
+                    <option value="Nuevo León">Nuevo León</option>
+                    <option value="Oaxaca">Oaxaca</option>
+                    <option value="Puebla">Puebla</option>
+                    <option value="Querétaro">Querétaro</option>
+                    <option value="Quintana Roo">Quintana Roo</option>
+                    <option value="San Luis Potosí">San Luis Potosí</option>
+                    <option value="Sinaloa">Sinaloa</option>
+                    <option value="Sonora">Sonora</option>
+                    <option value="Tabasco">Tabasco</option>
+                    <option value="Tamaulipas">Tamaulipas</option>
+                    <option value="Tlaxcala">Tlaxcala</option>
+                    <option value="Veracruz">Veracruz</option>
+                    <option value="Yucatán">Yucatán</option>
+                    <option value="Zacatecas">Zacatecas</option>
+                  </select>
                   <div class="invalid-feedback">
                     Valid last name is required.
                   </div>
@@ -420,8 +485,8 @@
                   <div class="input-group has-validation">
                     <span class="input-group-text">@</span>
                     <input type="text" class="form-control" id="promedio" placeholder="Username" required>
-                  <div class="invalid-feedback">
-                      Your username is required.
+                    <div class="invalid-msg" id="error-promedio">
+                      <p>Campo en blanco o promedio no permitido (Debe ser de un valor máximo de 10 y contar como máximo 2 decimales)<p>
                     </div>
                   </div>
                 </div>
