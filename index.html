@@ -304,7 +304,7 @@
             <div class="col-md-3">
               <label for="fecha_nac" class="form-label">Fecha de nacimiento</label>
               <input type="date" class="form-control" id="fecha_nac" placeholder="" required>
-              <div class="invalid-msg" id="error-A_materno">
+              <div class="invalid-msg" id="error-fecha_nac">
                 <p>Campo Obligatorio<p>
               </div>
             </div>
@@ -428,13 +428,14 @@
                     <option value="CECyT13">CECyT 13 "Ricardo Flores Magón"</option>
                     <option value="CECyT14">CECyT 14 "Luis Enrique Erro"</option>
                     <option value="CECyT15">CECyT 15 "Diódoro Antúnez Echegaray"</option>
+                    <option value="CECyT16">CECyT 16 "Hidalgo"</option>
                     <option value="CECyT19">CECyT 19 “Leona Vicario”</option>
                     <option value="CET1">CET 1 “Walter Cross Buchanan”</option>
                     <option value="otro">Otro</option>
                   </select>
                   <div id="otrocampo"><input type="text" class="form-control" id="esc_p_otro" placeholder="Escriba el nombre de su escuela de procedencia"></div>
-                  <div class="invalid-feedback">
-                    Valid first name is required.
+                  <div class="invalid-msg" id="error-otro">
+                    <p>Campo obligatorio. Tampoco se permiten caracteres especiales<p>
                   </div>
                 </div>
     
@@ -474,9 +475,6 @@
                     <option value="Yucatán">Yucatán</option>
                     <option value="Zacatecas">Zacatecas</option>
                   </select>
-                  <div class="invalid-feedback">
-                    Valid last name is required.
-                  </div>
                 </div>
               
                 <div class="col-md-6">
