@@ -276,7 +276,7 @@
     <div class="row g-5">
       <div class="col-sm-6 col-md-7 col-lg-8">
         <h4 class="mb-3 ">Identidad</h4>
-        <form class="needs-validation" id="formularioDatos" onsubmit="checkBeforeSend()"novalidate>
+        <form class="needs-validation" id="formularioDatos" novalidate>
           <div class="row g-3">
             <div class="col-md-4">
               <label for="Nombre_pila" class="form-label">Nombre de pila</label>
@@ -311,7 +311,7 @@
             </div>
             <div class="col-md-3">
               <label for="Genero" class="form-label">Genero</label>
-              <select id="Genero" class="form-select" required>
+              <select id="GeneroSelect" class="form-select" required>
               <option value="" disabled>--Seleccione el genero--</option>
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
@@ -477,20 +477,17 @@
               
                 <div class="col-md-6">
                   <br>
-                  <label for="promedio" class="form-label">Promedio</label>
-                  <div class="input-group has-validation">
-                    <span class="input-group-text">@</span>
+                    <label for="promedio" class="form-label">Promedio</label>
                     <input type="text" class="form-control" id="promedio" placeholder="Username" required>
                     <div class="invalid-msg" id="error-promedio">
                       <p>Campo obligatorio<p>
                     </div>
-                  </div>
                 </div>  
           <!--<hr class="my-4">-->
           <div style="text-align:end">
           <br>
           <input class="btn btn-primary btn-md" type="reset" value="Borrar" onclick="resetFormData()">
-          <input class="btn btn-primary btn-md" type="submit" value="Registrar">
+          <input class="btn btn-primary btn-md" value="Registrar" onclick="checkBeforeSend()">
           </div>
         </form>
       </div>
@@ -499,6 +496,7 @@
 </div>
     <script src="./JS/bootstrap.bundle.min.js"></script>
     <script src="./JS/form-validation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 <hr class="featurette-divider bg-light">
 
@@ -509,25 +507,38 @@
   </footer>
   </body>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Registrar
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal de invalido-->
+<div class="modal fade" id="incorrectPopUp" tabindex="-1" aria-labelledby="incorrectPopUpModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="incorrectPopUpModalLabel">DATOS INVALIDOS</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        FAVOR DE REVISAR QUE LOS DATOS INGRESADOS ESTÉN CORRECTOS Y QUE LOS CAMPOS OBLIGATORIOS SE ENCUENTREN LLENOS
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de verificacion antes de enviar -->
+<div class="modal fade" id="correctPopUp" tabindex="-1" aria-labelledby="correctPopUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="correctPopUpModalLabel">DATOS CORRECTOS</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Hola “el nombre del alumno”, verifica que los datos que ingresaste sean correctos:
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Editar</button>
+        <button type="submit" class="btn btn-primary" onclick="submitForm()" >Aceptar y continuar</button>
       </div>
     </div>
   </div>
@@ -536,3 +547,4 @@
 
 
 </html>
+
