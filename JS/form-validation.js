@@ -1,6 +1,8 @@
 /*Conseguir arreglos de entradas*/
 const inputs = document.querySelectorAll('.needs-validation');
 
+
+
 //Definiciones de expresiones regulares
 const expRegulares = {
   nombres: /^[a-zA-Z\u00C0-\u017F\s]+$/,
@@ -14,7 +16,7 @@ const expRegulares = {
   prom: /^([6-9](\.[0-9][0-9]?)?)$|^(10)$/
 }
 
-//Booleanos de campos que indica que un campo es valido (Declaraciones iniciales)
+//Diccionaro de booleanos de campos que indica que un campo es valido (Declaraciones iniciales)
 const campos = {
   Nombre_pila: false,
   A_paterno: false,
@@ -36,24 +38,103 @@ const campos = {
   promedio:false,
 }
 
+//Diccionario de datos de entrada registrados
+const registros = {
+  Nombre_pila:"",
+  A_paterno:"",
+  A_materno:"",
+  fecha_nac:"",
+  Genero:"",
+  Curp:"",
+  Boleta:"",
+  Alcaldia:"",
+  Colonia:"",
+  CP:"",
+  calle:"",
+  num_e:"",
+  num_i:"",
+  telefono:"",
+  correo:"",
+  esc_p:"",
+  ent_p:"",
+  promedio:"",
+}
 
 
-const forms = document.querySelectorAll('.needs-validation')
-
-//Evitar que se reinicie el formulario
-Array.from(forms).forEach(form => {
-  form.addEventListener('submit', event => {
-      event.preventDefault()
-      event.stopPropagation()
-  }, false)
-})
-
+//Checar antes de enviar y guardar los datos en el diccionario de registros
 function checkBeforeSend(){
+
+//Verificar que todos los campos sean validos
   for(let key in campos){
     if(campos[key]==false){
-
+      //Si hay algun dato que no es valida envia un mensaje para avisarle al usuario y termina la ejecucón
+      $('#incorrectPopUp').modal('toggle');
+      return; 
     }
   }
+
+   //Guardar los datos en el diccionario de registros cuando todos los datos sean validos
+   let container = document.getElementById('formularioDatos');
+   let inputs = container.getElementsByTagName('input');
+ 
+   //Guardar los datos de inputs libre
+   for(let i = 0;i < inputs.length;i++){
+     if(inputs[i].id!='esc_p_otro'){
+       registros[`${inputs[i].id}`] = inputs[i].value;
+     }
+   }
+ 
+   //Guardar los datos de seleccion de genero
+   let genero = document.getElementById("GeneroSelect");
+ 
+   registros.Genero = genero.options[genero.selectedIndex].text;
+ 
+   //Guardar los datos de seleccion de entidad
+   let entidad = document.getElementById("ent_p");
+   registros.ent_p = entidad.options[entidad.selectedIndex].text;
+ 
+    //Guardar los datos de seleccion de escuela de procedencia
+     let escproc = document.getElementById("esc_p");
+     
+     if(document.getElementById('otrocampo').style.display == "none"){
+       registros.esc_p = escproc.options[escproc.selectedIndex].text;
+     }
+     else
+     {
+       registros.esc_p = document.getElementById('esc_p_otro').value;
+     }
+ 
+    //Cambiar texto del modal
+    let modalContainer = document.getElementById('correctPopUp');
+    let modalBody = modalContainer.getElementsByClassName('modal-body');
+
+    let bodyData = 
+    `<b>Nombre(s):</b> ${registros.Nombre_pila}<br>
+    <b>Apellido Paterno:</b> ${registros.A_paterno}<br>
+    <b>Apellido Materno:</b> ${registros.A_materno}<br>
+    <b>Fecha de Nacimiento:</b> ${registros.fecha_nac}<br>
+    <b>Genero:</b> ${registros.Genero}<br>
+    <b>CURP:</b> ${registros.Curp}<br>
+    <b>No. De boleta:</b> ${registros.Boleta}<br>
+    <b>Alcaldia o Municipio:</b> ${registros.Alcaldia}<br>
+    <b>Colonia:</b> ${registros.Colonia}<br>
+    <b>Codigo Postal:</b> ${registros.CP}<br>
+    <b>Calle:</b> ${registros.calle}<br>
+    <b>No.Exterior:</b> ${registros.num_e}<br>
+    <b>No.Interior:</b> ${registros.num_i}<br>
+    <b>Teléfono:</b> ${registros.telefono}<br>
+    <b>Correo electrónico:</b> ${registros.correo}<br>
+    <b>Escuela de procedencia:</b> ${registros.esc_p}<br>
+    <b>Entidad de procedencia:</b> ${registros.ent_p}<br>
+    <b>Promedio:</b> ${registros.promedio}<br>
+    `
+      
+    modalBody[0].innerHTML = `Hola ${registros.Nombre_pila} ${registros.A_paterno} ${registros.A_materno} verifica que los datos que ingresaste sean correctos:<br>`+bodyData;
+      
+      
+    //Mostrar ventana de confirmacion
+    $('#correctPopUp').modal('toggle');
+
 
   return;
 }
@@ -130,7 +211,7 @@ function validarFormulario(i){
       validarCampoExpReg(expRegulares.boleta,i.target,'Boleta',"<p>Numero de boleta no valida<\p>",false);
     break;
     case "Alcaldia":
-      validarCampoExpReg(expRegulares.nombres,i.target,'Alcaldia',"<p>No se permiten caracteres especiales ni números<\p>",false);
+      validarCampoLleno(i.target,'Alcaldia');
     break;
     case "Colonia":
       validarCampoLleno(i.target,'Colonia');
@@ -190,7 +271,7 @@ function resetFormData(){
   ocultarCampo();
   for(let key in campos){
     console.log(key);
-    if(key=='num_i' || key == 'esc_p' || key == 'ent_p'){
+    if(key=='num_i' || key == 'esc_p' || key == 'ent_p' || key == 'Genero'){
       campos[key]=true;
       if(document.getElementById(`error-${key}`)!=null){
         document.getElementById(`error-${key}`).style.display = "none";
@@ -232,4 +313,10 @@ function mostrarCampo(name){
 /*Funcion para ocultar campo de "otros" en la opcion de escuela de procedencia*/
 function ocultarCampo(){
   document.getElementById('otrocampo').style.display = 'none';
+}
+
+//Función para enviar el diccionario de registros al servidor
+function submitForm(){
+  let form = document.getElementById("formularioDatos");
+  form.submit();
 }
