@@ -276,17 +276,17 @@
     <div class="row g-5">
       <div class="col-sm-6 col-md-7 col-lg-8">
         <h4 class="mb-3 ">Identidad</h4>
-        <form class="needs-validation" id="formularioDatos" novalidate>
+        <form class="needs-validation" method="post" id="formularioDatos" action="prueba.php">
           <div class="row g-3">
             <div class="col-md-4">
               <label for="Nombre_pila" class="form-label">Nombre de pila</label>
-              <input type="text" class="form-control" id="Nombre_pila" placeholder="" value="" required>
+              <input type="text" class="form-control" id="Nombre_pila" name="pila" placeholder="" value="" required>
               <div class="invalid-msg" id="error-Nombre_pila">
                 <p>Campo obligatorio<p>
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4">  
               <label for="A_paterno" class="form-label">Apellido paterno</label>
               <input type="text" class="form-control" id="A_paterno" placeholder="" value="" required>
               <div class="invalid-msg" id="error-A_paterno">
@@ -407,7 +407,7 @@
               <div class="row g">
                 <div class="col-md-5">
                   <label for="esc_p" class="form-label">Escuela de procedencia</label>
-                  <select class="form-control" id="esc_p" placeholder="" value="" onchange="mostrarCampo(this.options[this.selectedIndex].value)" required>
+                  <select class="form-control" id="esc_p" placeholder=""  name="EscProc" value="" onchange="mostrarCampo(this.options[this.selectedIndex].value)" required>
                     <option value="" disabled>--Seleccione escuela de procedencia--</option>
                     <option value="CECyT1">CECyT 1 "González Vázquez Vega"</option>
                     <option value="CECyT2">CECyT 2 "Miguel Bernard"</option>
@@ -430,7 +430,7 @@
                     <option value="otro">Otro</option>
                   </select>
                   <div id="otrocampo">
-                    <input type="text" class="form-control" id="esc_p_otro" placeholder="Escriba el nombre de su escuela de procedencia">
+                    <input type="text" class="form-control" id="esc_p_otro" name = "otro" placeholder="Escriba el nombre de su escuela de procedencia">
                     </div>
                     <div class="invalid-msg" id="error-esc_p_otro">
                       <p><p>
@@ -538,7 +538,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Editar</button>
-        <button type="submit" class="btn btn-primary" onclick="submitForm()" >Aceptar y continuar</button>
+        <input type="submit" class="btn btn-primary" onclick="submitForm()" > </button> 
+        <!-- <input type="submit" class="btn btn-primary" value="Aceptar y continuar"> -->
       </div>
     </div>
   </div>
