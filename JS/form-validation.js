@@ -63,7 +63,6 @@ const registros = {
 
 //Checar antes de enviar y guardar los datos en el diccionario de registros
 function checkBeforeSend(){
-
 //Verificar que todos los campos sean validos
   for(let key in campos){
     if(campos[key]==false){
@@ -130,13 +129,13 @@ function checkBeforeSend(){
     `
       
     modalBody[0].innerHTML = `Hola ${registros.Nombre_pila} ${registros.A_paterno} ${registros.A_materno} verifica que los datos que ingresaste sean correctos:<br>`+bodyData;
-      
+    
       
     //Mostrar ventana de confirmacion
     $('#correctPopUp').modal('toggle');
 
 
-  return;
+  return ;
 }
 
 //Funcion para validar un campo mediante una expresion regular y modifica en los booleanos de 
@@ -316,7 +315,7 @@ function ocultarCampo(){
 }
 
 //Función para enviar el diccionario de registros al servidor
-function submitForm(){
+ function submitForm(){
   let form = document.getElementById("formularioDatos");
   form.submit();
-}
+} 
