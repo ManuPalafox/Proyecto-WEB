@@ -45,86 +45,21 @@ CREATE TABLE `persona` (
   `promedio` varchar(30) NOT NULL, 
   
   PRIMARY KEY (`idpersona`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DELIMITER $$
-	CREATE PROCEDURE select_persona(id BIGINT)
-    BEGIN
-		SELECT idpersona,papellido,sapellido,nombre,fecha,genero,numbol,calle,numerocasaext,numerocasaint,colonia,alcaldia,entife,cp,
-            tel,cel,correo,ocupacion,curp,escuela,promedio FROM persona WHERE idpersona=id AND STATUS != 0;
-	END; $$
-DELIMITER ;
+ALTER TABLE `persona`
+  ADD UNIQUE KEY `numbol` (`numbol`);
 
-DELIMITER $$z
-	CREATE PROCEDURE insert_persona(nombre varchar(30),papellido varchar(30),sapellido varchar(30),
-    fecha varchar(15),genero varchar(30),curp varchar(30),numbol varchar(30),alcaldia varchar(30),
-    colonia varchar(30),cp varchar(30),calle varchar(30),numerocasaext varchar(30),numerocasaint varchar(30),
-    tel varchar(30),correo varchar(30),escuela varchar(40), entife varchar(30),promedio varchar(30))
-    BEGIN
-		DECLARE existe_persona INT;
-        DECLARE id INT;
-       
-		SET existe_persona = ( SELECT COUNT(*) FROM persona WHERE correo = correob);   
-        IF existe_persona = 0 THEN
-			INSERT INTO persona(nombre,papellido.sapellido,fecha, genero, curp, numbol,alcaldia,colonia,
-            cp,calle,numerocasaext,numerocasaint,tel,correo,escuela,entife,promedio)
-            
-            VALUES(nombre,papellido.sapellido,fecha, genero, curp, numbol,alcaldia,colonia,
-            cp,calle,numerocasaext,numerocasaint,tel,correo,escuela,entife,promedio);
-			SET id = LAST_INSERT_ID();
-            ELSE 
-				SET id=0;        
-        END IF;
-        SELECT id; 
-    END; $$
-DELIMITER ;
 
-DELIMITER $$
-	CREATE PROCEDURE update_persona(id BIGINT(20),nombre varchar(30),papellido varchar(30),sapellido varchar(30),
-    fecha varchar(15),genero varchar(30),curp varchar(30),numbol varchar(30),alcaldia varchar(30),
-    colonia varchar(30),cp varchar(30),calle varchar(30),numerocasaext varchar(30),numerocasaint varchar(30),
-    tel varchar(30),correo varchar(30),escuela varchar(40), entife varchar(30),promedio varchar(30) )
-    BEGIN
-		DECLARE existe_persona INT;
-        DECLARE existe_email INT;
-        DECLARE idp INT;
-       
-		SET existe_persona = ( SELECT COUNT(*) FROM persona WHERE idpersona = id);   
-        IF existe_persona > 0 THEN
-			SET existe_email = ( SELECT COUNT(*) FROM persona WHERE correo = correob AND idpersona != id);
-            IF existe_email = 0 THEN 
-				UPDATE persona SET nombre=nombreb, papellido=papellidob, sapellido=sapellidob, fecha=fechab,
-                genero=generob, curp=curpb, numbol=numbolb, alcaldia=alcaldiab, colonia=coloniab, cp=cpb, calle=calleb,
-                numerocasaext=numerocasaextb, numerocasaint=numerocasaintb, tel=telb, correo=correob, 
-                escuela=escuelab, entife=entifeb, promedio=promediob  WHERE idpersona = id;
-				SET idp = id;
-            ELSE
-				SET idp = 0;
-            END IF;
-			
-            ELSE 
-				SET idp=0;        
-        END IF;
-        SELECT idp; 
-    END; $$
-DELIMITER ;
 
-DELIMITER $$
-	CREATE PROCEDURE delete_persona(personaid BIGINT(20))
-    BEGIN
-		DECLARE existe_persona INT;
-        DECLARE id INT;
-       
-		SET existe_persona = ( SELECT COUNT(*) FROM persona WHERE idpersona = personaid);   
-        IF existe_persona > 0 THEN
-			DELETE FROM persona where idpersona = personaid;
-            SET id = 1;
-		ELSE
-				SET id = 0;
-            END IF;	     
-        SELECT id; 
-    END; $$
-DELIMITER ;
+
+
+
+
+
+
+
 
 
 
