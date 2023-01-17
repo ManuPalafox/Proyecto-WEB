@@ -2,7 +2,6 @@
 const inputs = document.querySelectorAll('.needs-validation');
 
 
-
 //Definiciones de expresiones regulares
 const expRegulares = {
   nombres: /^[a-zA-Z\u00C0-\u017F\s]+$/,
@@ -38,6 +37,8 @@ const campos = {
   promedio:false,
 }
 
+
+
 //Diccionario de datos de entrada registrados
 const registros = {
   Nombre_pila:"",
@@ -58,11 +59,15 @@ const registros = {
   esc_p:"",
   ent_p:"",
   promedio:"",
-}
+};
+
+
+
 
 
 //Checar antes de enviar y guardar los datos en el diccionario de registros
 function checkBeforeSend(){
+
 //Verificar que todos los campos sean validos
   for(let key in campos){
     if(campos[key]==false){
@@ -129,13 +134,13 @@ function checkBeforeSend(){
     `
       
     modalBody[0].innerHTML = `Hola ${registros.Nombre_pila} ${registros.A_paterno} ${registros.A_materno} verifica que los datos que ingresaste sean correctos:<br>`+bodyData;
-    
+      
       
     //Mostrar ventana de confirmacion
     $('#correctPopUp').modal('toggle');
 
 
-  return ;
+  return;
 }
 
 //Funcion para validar un campo mediante una expresion regular y modifica en los booleanos de 
@@ -284,12 +289,8 @@ function resetFormData(){
         document.getElementById(`error-${key}`).style.display = "block";
         document.getElementById(`error-${key}`).innerHTML = "<p>Campo obligatorio<\p>"
       }
-
-      
     }
-
   }
-
 }
 
 
@@ -315,7 +316,8 @@ function ocultarCampo(){
 }
 
 //Función para enviar el diccionario de registros al servidor
- function submitForm(){
+function submitForm(){
   let form = document.getElementById("formularioDatos");
   form.submit();
-} 
+  alert('Registro exitoso');
+}
