@@ -30,8 +30,7 @@ if($conexion -> connect_errno){
 
 }
 else{
-    $conexion->query("INSERT INTO persona VALUES('$Nombre_pila' , '$AP' , '$AM' , '$FN' , '$Gen' , '$CURP' , '$NB' , '$ALC' , '$Col' , '$CP' , '$NC' , '$NE' , '$NI' , '$Tel' , '$C' , '$EscPorc' , '$EFP' , '$Prom')");
-    echo "<script>alert('Registro exitoso');</script>";
+    $conexion->query("INSERT INTO persona(nombre,papellido,sapellido,fecha,genero,curp,numbol,alcaldia,colonia,cp,calle,numerocasaext,numerocasaint,tel,correo,escuela,entife,promedio) VALUES('$Nombre_pila' , '$AP' , '$AM' , '$FN' , '$Gen' , '$CURP' , '$NB' , '$ALC' , '$Col' , '$CP' , '$NC' , '$NE' , '$NI' , '$Tel' , '$C' , '$EscPorc' , '$EFP' , '$Prom')");
     header("Location: index.html");
     die();
 }
