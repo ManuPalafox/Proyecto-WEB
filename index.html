@@ -129,40 +129,43 @@
     <!-- Custom styles for this template -->
     <link href="./CSS/carousel.css" rel="stylesheet">
     <link href="./CSS/form-validation.css" rel="stylesheet">
-
-  </head>
-  <body onload="ocultarCampo()">
     
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" >
-    <div class="container-fluid">
-      <a class="navbar-brand" target="_blank" href="https://www.ipn.mx/" class="d-inline-block align-text-top" style="font-size: medium;">
-        <img src="./Img/ipn.png" alt="ESCOM logo" width="30" height="25">
-         IPN
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./Pagina_principal.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./Recuperacion_de_horario.html">Horario</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Tecnologías para el Desarrollo de Aplicaciones Web</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-</header>
+  </head>
+
+    <body onload="ocultarCampo()">
+
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" >
+        <div class="container-fluid">
+          <a class="navbar-brand" target="_blank" href="https://www.ipn.mx/" class="d-inline-block align-text-top" style="font-size: medium;">
+            <img src="./Img/ipn.png" alt="ESCOM logo" width="30" height="25">
+             IPN
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="./Recuperacion_de_horario.html">Horario</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./Pagina_principal.html">Admin</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Tecnologías para el Desarrollo de Aplicaciones Web</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+
   <!-- Fondo del carousel -->
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -269,7 +272,7 @@
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="./Img/ESCOM_logo.png" alt="" width="200px" height="150px">
       <h2>Bienvenido a tu registro</h2>
-      <p class="lead">En esta sección comenzará tu registro, los campos marcados con (*) será necesario llenarlos para que tus datos puedan ser enviados de forma correcta.</p>
+      <p class="lead">En esta sección comenzará tu registro, los campos marcados en rojo será necesario llenarlos para que tus datos puedan ser enviados de forma correcta.</p>
     </div>
 
     
@@ -288,7 +291,7 @@
 
             <div class="col-md-4">  
               <label for="A_paterno" class="form-label">Apellido paterno</label>
-              <input type="text" class="form-control" id="A_paterno" placeholder="" value="" required>
+              <input type="text" class="form-control" id="A_paterno" name="AP" placeholder="" value="" required>
               <div class="invalid-msg" id="error-A_paterno">
                 <p>Campo obligatorio<p>
               </div>
@@ -296,7 +299,7 @@
 
             <div class="col-md-4">
               <label for="A_materno" class="form-label">Apellido materno</label>
-              <input type="text" class="form-control" id="A_materno" placeholder="" value="" required>
+              <input type="text" class="form-control" id="A_materno" name="AM" placeholder="" value="" required>
               <div class="invalid-msg" id="error-A_materno">
                 <p>Campo obligatorio<p>
               </div>
@@ -304,14 +307,14 @@
   
             <div class="col-md-3">
               <label for="fecha_nac" class="form-label">Fecha de nacimiento</label>
-              <input type="date" class="form-control" id="fecha_nac" placeholder="" onchange= "validarFecha()" required>
+              <input type="date" class="form-control" id="fecha_nac" name="FN" placeholder="" onchange= "validarFecha()" required>
               <div class="invalid-msg" id="error-fecha_nac">
                 <p>Campo Obligatorio<p>
               </div>
             </div>
             <div class="col-md-3">
               <label for="Genero" class="form-label">Genero</label>
-              <select id="GeneroSelect" class="form-select" required>
+              <select id="GeneroSelect" class="form-select" name="Gen" required>
               <option value="" disabled>--Seleccione el genero--</option>
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
@@ -323,7 +326,7 @@
 
           <div class="col-md-3">
             <label for="Curp" class="form-label">CURP</label>
-            <input type="text" class="form-control" id="Curp" placeholder="" required>
+            <input type="text" class="form-control" id="Curp" name="CURP" placeholder="" required>
             <div class="invalid-msg" id="error-Curp">
               <p>Campo obligatorio<p>
             </div>
@@ -331,7 +334,7 @@
 
           <div class="col-md-3">
             <label for="Boleta" class="form-label">Numero de boleta</label>
-            <input type="text" class="form-control" id="Boleta" placeholder="" required>
+            <input type="text" class="form-control" id="Boleta" name="NB" placeholder="" required>
             <div class="invalid-msg" id="error-Boleta">
               <p>Campo obligatorio<p>
             </div>
@@ -342,21 +345,21 @@
               <div class="row g">
                 <div class="col-sm-5">
                   <label for="Alcaldia" class="form-label">Alcaldia</label>
-                  <input type="text" class="form-control" id="Alcaldia" placeholder="Seleccion" required>
+                  <input type="text" class="form-control" id="Alcaldia" name="ALC" placeholder="Seleccion" required>
                   <div class="invalid-msg" id="error-Alcaldia">
                     <p>Campo obligatorio<p>
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <label for="Colonia" class="form-label">Colonia</label>
-                  <input type="text" class="form-control" id="Colonia" placeholder="Roma" required>
+                  <input type="text" class="form-control" id="Colonia" name="Col" placeholder="Roma" required>
                   <div class="invalid-msg" id="error-Colonia">
                     <p>Campo obligatorio<p>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <label for="CP" class="form-label">C.P</label>
-                  <input type="text" class="form-control" id="CP" placeholder="55110" required>
+                  <input type="text" class="form-control" id="CP" name="CP" placeholder="55110" required>
                   <div class="invalid-msg" id="error-CP">
                     <p>Campo obligatorio<p>
                   </div>
@@ -364,21 +367,21 @@
               </div>
               <div class="col-sm-5">
                   <label for="calle" class="form-label">Nombre de la calle</label>
-                  <input type="text" class="form-control" id="calle" placeholder="Republica del salvador" value="" required>
+                  <input type="text" class="form-control" id="calle" name="NC" placeholder="Republica del salvador" value="" required>
                   <div class="invalid-msg" id="error-calle">
                     <p>Campo obligatorio<p>
                   </div>
               </div>
                 <div class="col-sm-4">
                   <label for="num_e" class="form-label">Numero exterior</label>
-                  <input type="text" class="form-control" id="num_e" placeholder="78" required>
+                  <input type="text" class="form-control" id="num_e" name="NE" placeholder="78" required>
                   <div class="invalid-msg" id="error-num_e">
                     <p>Campo obligatorio<p>
                   </div>
                 </div>
                 <div class="col-sm-3">
                   <label for="num_i" class="form-label">Numero interior</label>
-                  <input type="text" class="form-control" id="num_i" placeholder="34">
+                  <input type="text" class="form-control" id="num_i" name="NI" placeholder="34">
                   <div class="invalid-msg" id="error-num_i">
                     <p><p>
                   </div>
@@ -386,7 +389,7 @@
                 <div class="row gy-3">
                   <div class="col-md-6">
                     <label for="telefono" class="form-label">Teléfono de contacto (Escribir solamente numeros)</label>
-                    <input type="tel" class="form-control" id="telefono" placeholder="" required>
+                    <input type="tel" class="form-control" id="telefono" name="Tel" placeholder="" required>
                     <div class="invalid-msg" id="error-telefono">
                       <p>Campo obligatorio<p>
                     </div>
@@ -394,7 +397,7 @@
       
                   <div class="col-md-6">
                     <label for="correo" class="form-label">Correo electronico</label>
-                    <input type="email" class="form-control" id="correo" placeholder="juan@gmail.com" required>
+                    <input type="email" class="form-control" id="correo" name="C" placeholder="juan@gmail.com" required>
                     <div class="invalid-msg" id="error-correo">
                       <p>Campo obligatorio<p>
                     </div>
@@ -404,6 +407,9 @@
             <!--Agregar escuela de procedencia cecyts,cet u otros, Entidad federativa 32 estados
             Nombre de la escuela, Promedio, escom fue:...-->
             <h4 class="mb-3">Procedencia</h4>
+
+            
+
               <div class="row g">
                 <div class="col-md-5">
                   <label for="esc_p" class="form-label">Escuela de procedencia</label>
@@ -430,59 +436,59 @@
                     <option value="otro">Otro</option>
                   </select>
                   <div id="otrocampo">
-                    <input type="text" class="form-control" id="esc_p_otro" name = "otro" placeholder="Escriba el nombre de su escuela de procedencia">
+                    <input type="text" class="form-control" id="esc_p_otro" name ="otro" placeholder="Escriba el nombre de su escuela de procedencia">
                     </div>
                     <div class="invalid-msg" id="error-esc_p_otro">
                       <p><p>
                     </div>
                   </div>
-    
-                <div class="col-md-5">
-                  <label for="ent_p" class="form-label">Entidad federativa de procedencia</label>
-                  <select class="form-control" id="ent_p" placeholder="" value="" required>
-                    <option value="Aguascalientes">Aguascalientes</option>
-                    <option value="Baja California">Baja California</option>
-                    <option value="Baja California Sur">Baja California Sur</option>
-                    <option value="Campeche">Campeche</option>
-                    <option value="Chiapas">Chiapas</option>
-                    <option value="Chihuahua">Chihuahua</option>
-                    <option value="CDMX">Ciudad de México</option>
-                    <option value="Coahuila">Coahuila</option>
-                    <option value="Colima">Colima</option>
-                    <option value="Durango">Durango</option>
-                    <option value="Estado de México">Estado de México</option>
-                    <option value="Guanajuato">Guanajuato</option>
-                    <option value="Guerrero">Guerrero</option>
-                    <option value="Hidalgo">Hidalgo</option>
-                    <option value="Jalisco">Jalisco</option>
-                    <option value="Michoacán">Michoacán</option>
-                    <option value="Morelos">Morelos</option>
-                    <option value="Nayarit">Nayarit</option>
-                    <option value="Nuevo León">Nuevo León</option>
-                    <option value="Oaxaca">Oaxaca</option>
-                    <option value="Puebla">Puebla</option>
-                    <option value="Querétaro">Querétaro</option>
-                    <option value="Quintana Roo">Quintana Roo</option>
-                    <option value="San Luis Potosí">San Luis Potosí</option>
-                    <option value="Sinaloa">Sinaloa</option>
-                    <option value="Sonora">Sonora</option>
-                    <option value="Tabasco">Tabasco</option>
-                    <option value="Tamaulipas">Tamaulipas</option>
-                    <option value="Tlaxcala">Tlaxcala</option>
-                    <option value="Veracruz">Veracruz</option>
-                    <option value="Yucatán">Yucatán</option>
-                    <option value="Zacatecas">Zacatecas</option>
-                  </select>
-                </div>
-              
-                <div class="col-md-6">
-                  <br>
-                    <label for="promedio" class="form-label">Promedio</label>
-                    <input type="text" class="form-control" id="promedio" placeholder="Username" required>
-                    <div class="invalid-msg" id="error-promedio">
-                      <p>Campo obligatorio<p>
-                    </div>
-                </div>  
+                  <div class="col-md-5">
+                    <label for="ent_p" class="form-label">Entidad federativa de procedencia</label>
+                    <select class="form-control" id="ent_p" placeholder=""  name="EFP" value="" required>
+                      <option value="Aguascalientes">Aguascalientes</option>
+                      <option value="Baja California">Baja California</option>
+                      <option value="Baja California Sur">Baja California Sur</option>
+                      <option value="Campeche">Campeche</option>
+                      <option value="Chiapas">Chiapas</option>
+                      <option value="Chihuahua">Chihuahua</option>
+                      <option value="CDMX">Ciudad de México</option>
+                      <option value="Coahuila">Coahuila</option>
+                      <option value="Colima">Colima</option>
+                      <option value="Durango">Durango</option>
+                      <option value="Estado de México">Estado de México</option>
+                      <option value="Guanajuato">Guanajuato</option>
+                      <option value="Guerrero">Guerrero</option>
+                      <option value="Hidalgo">Hidalgo</option>
+                      <option value="Jalisco">Jalisco</option>
+                      <option value="Michoacán">Michoacán</option>
+                      <option value="Morelos">Morelos</option>
+                      <option value="Nayarit">Nayarit</option>
+                      <option value="Nuevo León">Nuevo León</option>
+                      <option value="Oaxaca">Oaxaca</option>
+                      <option value="Puebla">Puebla</option>
+                      <option value="Querétaro">Querétaro</option>
+                      <option value="Quintana Roo">Quintana Roo</option>
+                      <option value="San Luis Potosí">San Luis Potosí</option>
+                      <option value="Sinaloa">Sinaloa</option>
+                      <option value="Sonora">Sonora</option>
+                      <option value="Tabasco">Tabasco</option>
+                      <option value="Tamaulipas">Tamaulipas</option>
+                      <option value="Tlaxcala">Tlaxcala</option>
+                      <option value="Veracruz">Veracruz</option>
+                      <option value="Yucatán">Yucatán</option>
+                      <option value="Zacatecas">Zacatecas</option>
+                    </select>
+                  </div>
+                
+                  <div class="col-md-6">
+                    <br>
+                      <label for="promedio" class="form-label">Promedio</label>
+                      <input type="text" class="form-control" id="promedio" name="Prom" placeholder="Username" required>
+                      <div class="invalid-msg" id="error-promedio">
+                        <p>Campo obligatorio<p>
+                      </div>
+                  </div> 
+                  
           <!--<hr class="my-4">-->
           <div style="text-align:end">
           <br>
@@ -548,4 +554,5 @@
 
 
 </html>
+
 
