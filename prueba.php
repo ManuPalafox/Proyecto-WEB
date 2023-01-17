@@ -1,9 +1,28 @@
 <?php
 $Nombre_pila = $_POST["pila"];
+$AP = $_POST["AP"];
+$AM = $_POST["AM"];
+$FN = $_POST["FN"];
+$Gen = $_POST["Gen"];
+$CURP = $_POST["CURP"];
+$NB = $_POST["NB"];
+$ALC = $_POST["ALC"];
+$Col = $_POST["Col"];
+$CP = $_POST["CP"];
+$NC = $_POST["NC"];
+$NE = $_POST["NE"];
+$NI = $_POST["NI"];
+$Tel = $_POST["Tel"];
+$C = $_POST["C"];
 $EscPorc = $_POST["EscProc"];
 if($EscPorc == "otro"){
     $EscPorc = $_POST["otro"];
 }
+$EFP = $_POST["EFP"];
+$Prom = $_POST["Prom"];
+
+
+
 $conexion = new mysqli("localhost", "root","", "form");
 
 if($conexion -> connect_errno){
@@ -11,9 +30,9 @@ if($conexion -> connect_errno){
 
 }
 else{
-    echo "Tus datos se guardaron con exito\n";
-    $conexion->query("INSERT INTO persona(nombre , escuela) VALUES('$Nombre_pila' , '$EscPorc')");
-    header("Location: index.html")
+    $conexion->query("INSERT INTO persona VALUES('$Nombre_pila' , '$AP' , '$AM' , '$FN' , '$Gen' , '$CURP' , '$NB' , '$ALC' , '$Col' , '$CP' , '$NC' , '$NE' , '$NI' , '$Tel' , '$C' , '$EscPorc' , '$EFP' , '$Prom')");
+    echo "<script>alert('Registro exitoso');</script>";
+    header("Location: index.html");
     die();
 }
 
