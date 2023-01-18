@@ -16,6 +16,7 @@ $NI = $_POST["NI"];
 $Tel = $_POST["Tel"];
 $C = $_POST["C"];
 $_SESSION["boleta"] = $_POST["NB"];
+$_SESSION["curp"] = $_POST["CURP"];
 $EscPorc = $_POST["EscProc"];
 if($EscPorc == "otro"){
     $EscPorc = $_POST["otro"];
