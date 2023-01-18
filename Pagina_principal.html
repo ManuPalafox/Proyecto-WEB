@@ -138,10 +138,22 @@
             <h4 class="my-0 fw-normal">Bienvenido admin</h4>
           </div>
           <div class="card-body">
-            <form class="d-flex" role="Ingresar contraseña">
-              <input class="form-control me-2" type="Ingresar contraseña" placeholder="Ingresar contraseña" aria-label="Ingresar contraseña">
-              <button class="btn btn-outline-success" type="submit">Enviar</button>
+            <form class="d-flex" role="Ingresar contraseña" name="FORMU" >
+              <input class="form-control me-2" type="password" name="contr" method="post" placeholder="Ingresar contraseña" aria-label="Ingresar contraseña">
+                <button class="btn btn-outline-success" type="submit" onclick="contra()" >Enviar</button>
+              
             </form>
+            <script>
+              function contra(){
+                var n1 = parseFloat(document.FORMU.contr.value);
+                var n2 = '12345';
+                if(n1==n2){
+                  FORMU.action="mostrar.php";
+                }else{
+                  alert('Contraseña incorrecta');
+                }
+              }
+            </script>
           </div>
         </div>
       </div>
