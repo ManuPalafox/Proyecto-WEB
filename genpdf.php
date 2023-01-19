@@ -9,9 +9,8 @@ include("./phpMailer/class.smtp.php");
 
 $email_user = "bustillos.leon.le@gmail.com"; //Debes actualizar esta línea con tu información
 $email_password = "zctikuxeczumypxw"; //Debes actualizar esta línea con tu información
-$the_subject = "Prueba de PHPMailer por BLLE (Jan 2023)";
-//$address_to = "lalito260402lebl@gmail.com"; //Debes actualizar esta línea con tu información
-$from_name = "TDAW";
+$the_subject = "Entrega del pdf de confirmacion";
+$from_name = "Pagina de registros ESCOM";
 $phpmailer = new PHPMailer();
 $phpmailer->Username = $email_user;
 $phpmailer->Password = $email_password;
@@ -164,12 +163,13 @@ date_default_timezone_set("America/Mexico_City");
 $pdfdoc = $pdf->Output('', 'S');
 $phpmailer->Subject = $the_subject;	
 $phpmailer->Body .="<h1 style='color:#3498db;'>Envio de datos</h1>";
-$phpmailer->Body .= "<p>Por medio del siguiente correo se hace entrega del formulario con los datos validados del usuario.</p>";
+$phpmailer->Body .= "<p>Por medio del siguiente correo se hace entrega del formulario con los datos validados del usuario. Esperamos asista en tiempo y forma, y por sobre todo le deseamos la mejor de las suertes.</p>";
 $phpmailer->Body .= "<p><b>Fecha: ".date("d-m-Y H:i:s")."</b></p>";
 $phpmailer->IsHTML(true);
 $phpmailer->addStringAttachment($pdfdoc, 'validacion.pdf');
 if(!$phpmailer->Send()){
     echo "El correo no se pudo enviar";
+    echo "<a href='index.html'>Volver</a>";
 }else{
     header("Location: index.html");
 }
